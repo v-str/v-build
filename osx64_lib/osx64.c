@@ -24,8 +24,8 @@ static int export_tgt(const char *v_build_dir) {
   char filename[COMMON_TEXT_SIZE] = {0};
 
   char *line = malloc(COMMON_TEXT_SIZE);
-  size_t n;
-  ssize_t read;
+  size_t n = COMMON_TEXT_SIZE;
+  ssize_t read = 0;
 
   strcpy(filename, v_build_dir);
   strcat(filename, "/.machine_name");

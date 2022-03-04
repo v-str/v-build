@@ -24,7 +24,7 @@ int load_plugin_internal(const char *restrict plugin_name) {
   FILE *pf = fopen(plugin_name, "r");
   char *line = malloc(COMMON_TEXT_SIZE);
   strcpy(line, "nothing");
-  size_t n = 0;
+  size_t n = COMMON_TEXT_SIZE;
   ssize_t read = 0;
   plugin_descriptor p_desc = {0};
 

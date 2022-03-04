@@ -111,9 +111,6 @@ void exec_help_command(const char *cmd) {
     }
 
     load_plugin(plugin_name);
-    if (plugin_name) {
-      free(plugin_name);
-    }
     reset_user_args();
   }
 
@@ -226,6 +223,7 @@ void view_all_plugins() {
   }
   strcat(plugins, OS_NO_COLOR);
   print_info_msg(OS_COLOR_YELLOW, plugins, YES);
+  closedir(d);
 }
 
 void print_incorrect_expected_values(size_t cur_idx, const char *expected_value,

@@ -42,8 +42,8 @@ static void execute() {
 static void _parse_order_list() {
   FILE *pf = fopen(_order_list_path, "r");
   char *line = malloc(COMMON_TEXT_SIZE);
-  size_t n;
-  ssize_t read;
+  size_t n = COMMON_TEXT_SIZE;
+  ssize_t read = 0;
 
   if (pf == NULL) {
     char err[COMMON_TEXT_SIZE] = " _parse_order_list, ";

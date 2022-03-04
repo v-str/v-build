@@ -27,7 +27,7 @@ void autoload_plugins() {
   FILE *pf = fopen(autoload_path, "r");
   char *line = malloc(COMMON_TEXT_SIZE);
   strcpy(line, "nothing");
-  size_t n = 0;
+  size_t n = COMMON_TEXT_SIZE;
   ssize_t read = 0;
 
   if (pf == NULL) {
