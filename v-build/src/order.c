@@ -42,13 +42,14 @@ static void execute() {
 static void _parse_order_list() {
   FILE *pf = fopen(_order_list_path, "r");
   char *line = malloc(COMMON_TEXT_SIZE);
-  size_t n;
-  ssize_t read;
+  size_t n = COMMON_TEXT_SIZE;
+  ssize_t read = 0;
 
   if (pf == NULL) {
     char err[COMMON_TEXT_SIZE] = " _parse_order_list, ";
     strcat(err, strerror(errno));
     printf("error: %s\n", err);
+    free(line);
     return;
   }
 
@@ -75,7 +76,9 @@ static void _parse_order_list() {
       strcpy(temp, line);
       temp[strcspn(temp, "\n")] = 0;
 
-      strcpy(_command, get_command_from_line(temp));
+      char *temp_cmd = get_command_from_line(temp);
+      strcpy(_command, temp_cmd);
+      free(temp_cmd);
 
       if ((_element = find_element_by_command(_command)) == NULL) {
         char temp[COMMON_TEXT_SIZE] = "cannot find command \"";

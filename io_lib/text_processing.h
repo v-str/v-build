@@ -4,6 +4,9 @@
 #include <stdbool.h>
 
 #include "text_creation.h"
+#include "text_global.h"
+
+char final_str[USER_COMMAND_LEN] = {};
 
 void greetings();
 void print_help_msg();

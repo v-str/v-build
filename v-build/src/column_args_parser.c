@@ -92,6 +92,7 @@ void get_user_func_column_args() {
     strcpy(user_input_args[i], arg_value);
 
     memset(arg_type_text, 0, sizeof(arg_type_text));
+    free(arg_value);
   }
 }
 

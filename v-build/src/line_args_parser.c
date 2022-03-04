@@ -5,16 +5,16 @@
 
 #include "io.h"
 #include "string.h"
-#include "v_build_global.h"
+
+char _cmd_internal[COMMON_TEXT_SIZE] = {0};
 
 static size_t _len = 0;
-static char _cmd[COMMON_TEXT_SIZE] = {0};
 static char _base_line[COMMON_TEXT_SIZE] = {0};
 static char _raw_args[COMMON_TEXT_SIZE] = {0};
 static char _final_args[ARGS_COUNT][COMMON_TEXT_SIZE];
 
 static void _reset_internal_values() {
-  memset(_cmd, '\0', COMMON_TEXT_SIZE);
+  memset(_cmd_internal, '\0', COMMON_TEXT_SIZE);
   memset(_base_line, '\0', COMMON_TEXT_SIZE);
   memset(_raw_args, '\0', COMMON_TEXT_SIZE);
   memset(_final_args, '\0', ARGS_COUNT * COMMON_TEXT_SIZE);
@@ -60,20 +60,20 @@ static bool _is_parse_line_ok() {
 
 char *get_command_from_line(const char *cmd_line) {
   size_t cmd_len = strlen(cmd_line);
-  char delim = ' ';
+  const char *delim = " ";
 
   _reset_internal_values();
 
   strcpy(_base_line, cmd_line);
-  _len = strcspn(_base_line, &delim);
+  _len = strcspn(_base_line, delim);
 
-  strncpy(_cmd, _base_line, _len);
+  strncpy(_cmd_internal, _base_line, _len);
 
   if (_len != cmd_len) {
     strcpy(_raw_args, _base_line + _len);
   }
 
-  return strdup(_cmd);
+  return _cmd_internal;
 }
 
 bool fill_line_args(const plugin_element *restrict elem) {

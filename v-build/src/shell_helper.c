@@ -223,6 +223,7 @@ void view_all_plugins() {
   }
   strcat(plugins, OS_NO_COLOR);
   print_info_msg(OS_COLOR_YELLOW, plugins, YES);
+  closedir(d);
 }
 
 void print_incorrect_expected_values(size_t cur_idx, const char *expected_value,
@@ -289,10 +290,7 @@ void exec_extra_command(const char *cmd) {
   }
 }
 
-void unset_internal_conf() {
-  free(user_input);
-  pthread_rwlock_destroy(&rwlock);
-}
+void unset_internal_conf() { pthread_rwlock_destroy(&rwlock); }
 
 void add_cmd_to_history(const char *cmd, const plugin_element *elem) {
   if (elem == NULL) {

@@ -7,8 +7,6 @@
 #include <termios.h>
 #include <unistd.h>
 
-#include "text_global.h"
-
 static struct termios stored_settings;
 
 bool _is_special_key(char *user_command) {
@@ -184,7 +182,7 @@ char *get_input(const char *input) {
   tcflush(0, TCIFLUSH);
 
   char *user_command = malloc(USER_COMMAND_LEN);
-  char *final_str = malloc(USER_COMMAND_LEN);
+  memset(final_str, 0, USER_COMMAND_LEN);
 
   memset(user_command, 0, USER_COMMAND_LEN);
   memset(final_str, 0, USER_COMMAND_LEN);

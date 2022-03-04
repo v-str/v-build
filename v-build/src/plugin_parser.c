@@ -23,14 +23,16 @@ plugin_element plugin_list[PLUGIN_LIST_SIZE] = {0};
 int load_plugin_internal(const char *restrict plugin_name) {
   FILE *pf = fopen(plugin_name, "r");
   char *line = malloc(COMMON_TEXT_SIZE);
-  size_t n;
-  ssize_t read;
+  strcpy(line, "nothing");
+  size_t n = COMMON_TEXT_SIZE;
+  ssize_t read = 0;
   plugin_descriptor p_desc = {0};
 
   if (pf == NULL) {
     char err[COMMON_TEXT_SIZE] = " _load_plugin, ";
     strcat(err, strerror(errno));
     printf("error: %s\n", err);
+    free(line);
     return -1;
   }
 
