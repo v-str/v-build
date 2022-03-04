@@ -91,6 +91,7 @@ pushd /parts/3-main_system
 ./util-linux_pkg.sh
 ./e2fsprogs_pkg.sh
 ./sysklogd_pkg.sh
+./rsync_pkg.sh
 
 
 # COMMENT strip system

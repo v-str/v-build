@@ -2,20 +2,20 @@
 
 --begin
 cd osx64
-osx64_export_variables
-osx64_check_variables
-osx64_extract
-osx64_binutils_pass_1
-osx64_gcc_pass_1
-osx64_install_kernel_headers
-osx64_glibc
-osx64_gcc_mkheaders
-osx64_libstd_cpp_pass_1
-osx64_sysutils
-osx64_binutils_pass_2
-osx64_gcc_pass_2
-osx64_copy_kernel_into_tree
+#osx64_export_variables
+#osx64_check_variables
+#osx64_extract
+#osx64_binutils_pass_1
+#osx64_gcc_pass_1
+#osx64_install_kernel_headers
+#osx64_glibc
+#osx64_gcc_mkheaders
+#osx64_libstd_cpp_pass_1
+#osx64_sysutils
+#osx64_binutils_pass_2
+#osx64_gcc_pass_2
+#osx64_copy_kernel_into_tree
 chown_tree_to_root
-prepare_vkfs
-chroot_tree_basic
+mount_vkfs
+chroot_tree
 --end
