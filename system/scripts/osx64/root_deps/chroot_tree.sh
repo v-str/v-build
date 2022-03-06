@@ -29,6 +29,10 @@ sudo cp -vr "${V_BUILD_DIR}/patches" "${V_BUILD_TREE_X86_64}/"
 
 msg_green "chroot into: " "${V_BUILD_TREE_X86_64}"
 
+if [ ! -d "${V_BUILD_TREE_X86_64}/packages" ]; then
+	mkdir ${V_BUILD_TREE_X86_64}/packages
+fi
+
 sudo chroot "${V_BUILD_TREE_X86_64}" /usr/bin/env -i   \
 							HOME=/root                  \
 							TERM="vt100"                \
