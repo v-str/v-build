@@ -10,3 +10,4 @@ plugins/system/libnavigation_lib.so.1.0.0
 system/libs/libio_lib.so.1.0.0
 system/libs/libnavigation_lib.so.1.0.0
 system/libs/libosx64_lib.so.1.0.0
+system/order.list
