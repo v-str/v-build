@@ -1,3 +1,9 @@
+https://dist.libuv.org/dist/v1.43.0/libuv-v1.43.0.tar.gz
+https://github.com/libarchive/libarchive/releases/download/v3.6.0/libarchive-3.6.0.tar.xz
+https://deac-ams.dl.sourceforge.net/project/expat/expat/2.4.1/expat-2.4.1.tar.xz
+https://github.com/Kitware/CMake/releases/download/v3.23.0-rc2/cmake-3.23.0-rc2.tar.gz
+https://curl.se/download/curl-7.81.0.tar.xz
+https://mirrors.edge.kernel.org/pub/software/scm/git/git-2.35.1.tar.xz
 https://download.savannah.gnu.org/releases/acl/acl-2.3.1.tar.xz
 https://sourceforge.net/projects/procps-ng/files/Production/procps-ng-3.3.17.tar.xz
 https://download.savannah.gnu.org/releases/attr/attr-2.5.1.tar.gz
@@ -77,3 +83,4 @@ https://zlib.net/zlib-1.2.11.tar.xz
 https://github.com/facebook/zstd/releases/download/v1.5.0/zstd-1.5.0.tar.gz
 https://download.samba.org/pub/rsync/src-previews/rsync-3.2.4pre3.tar.gz
 https://ftp.gnu.org/gnu/grub/grub-2.06.tar.xz
+https://github.com/Kitware/CMake/releases/download/v3.23.0-rc2/cmake-3.23.0-rc2.tar.gz

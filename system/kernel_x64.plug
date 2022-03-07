@@ -1,0 +1,55 @@
+#   example
+#
+#   --begin
+#   type = bin | script
+#   command = function | script
+#   exec = path from system dir to exec file
+#   ret_val = void || int || bool || char* || text (script)
+#   args = arg1, arg2, argN || no
+#   desc = description
+#   --end
+
+#--begin
+#type = script
+#command = mount_vkfs
+#exec = system/scripts/osx64/root_deps/mount_vkfs.sh
+#ret_val = void
+#args = no
+#desc = mount virtual kernel file system
+#--end
+
+#--begin
+#type = script
+#command = unmount_vkfs
+#exec = system/scripts/osx64/root_deps/unmount_vkfs.sh
+#ret_val = void
+#args = no
+#desc = unmount virtual kernel file system
+#--end
+
+--begin
+type = script
+command = menuconfig
+exec = system/scripts/kernel_x64/menuconfig.sh
+ret_val = void
+args = no
+desc = linux kernel menuconfig
+--end
+
+#--begin
+#type = script
+#command = pack_tree
+#exec = system/scripts/osx64/common/pack_tree.sh
+#ret_val = void
+#args = char*
+#desc = save temp tree in $V_BUILD_DIR (tarname)
+#--end
+
+#--begin
+#type = script
+#command = unpack_tree
+#exec = system/scripts/osx64/common/unpack_tree.sh
+#ret_val = void
+#args = char*, char*
+#desc = unpack the tree in $V_BUILD_DIR (tarname, treename)
+#--end
