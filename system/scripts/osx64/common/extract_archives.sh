@@ -45,6 +45,13 @@ else
 	exit 1
 fi
 
+mkdir -p "${V_BUILD_PKG_DIR}/qt5/qt5"
+pushd ${V_BUILD_PKG_DIR}/qt5/qt5
+
+git clone git://code.qt.io/qt/qt5.git .
+
+popd
+
 echo "true" > "${V_BUILD_DIR}/.extracted"
 
 exit 0

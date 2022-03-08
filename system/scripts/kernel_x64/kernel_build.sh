@@ -31,7 +31,7 @@ sudo chroot "${V_BUILD_TREE_X86_64}" /usr/bin/env -i   \
 							TERM="vt100"                \
 							PS1='(v-build chroot) \u:\w\$ ' \
 							PATH=/usr/bin:/usr/sbin     \
-							/bin/bash /parts/5-kernel/menuconfig.sh
+							/bin/bash /parts/5-kernel/kernel_build.sh
 
 exit 0
 

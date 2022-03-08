@@ -14,7 +14,7 @@ printf "\n1. CONFIG_NAME
 read -p 'Operation: ' var
 
 if [ "$var" != "skip" ]; then
-	cp /parts/kernel_configs/$var /$linux/.config
+	cp -v /parts/kernel_configs/$var /$linux/.config
 	cd $linux && make menuconfig
 else
 	cd $linux && make menuconfig
@@ -27,7 +27,7 @@ printf "\nSave config?\n
 read -p 'Operation: ' var
 
 if [ "$var" != "skip" ]; then
-	cp /$linux/.config /parts/kernel_configs/$var
+	cp -v /$linux/.config /parts/kernel_configs/$var
 	echo "done"
 else
 	echo "done"
