@@ -35,3 +35,14 @@ ret_val = void
 args = no
 desc = save kernel in system/emulation/bzImage
 --end
+
+--begin
+type = script
+command = place_kernel
+exec = system/scripts/kernel_x64/place_kernel.sh
+ret_val = void
+args = no
+desc = place kernel inside tree
+--end
+
+

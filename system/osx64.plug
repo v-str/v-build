@@ -182,15 +182,6 @@ desc = build gcc pass 2
 
 --begin
 type = script
-command = osx64_copy_kernel_into_tree
-exec = system/scripts/osx64/toolchain/copy_kernel_inside.sh
-ret_val = void
-args = no
-desc = copy packages for chrooting
---end
-
---begin
-type = script
 command = chown_tree_to_root
 exec = system/scripts/osx64/root_deps/chown_tree.sh
 ret_val = void
