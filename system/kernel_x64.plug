@@ -45,4 +45,13 @@ args = no
 desc = place kernel inside tree
 --end
 
+--begin
+type = script
+command = install_hm
+exec = system/scripts/kernel_x64/install_hm.sh
+ret_val = void
+args = no
+desc = install headers and modules into tree
+--end
+
 

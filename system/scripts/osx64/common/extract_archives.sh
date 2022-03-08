@@ -48,7 +48,7 @@ fi
 mkdir -p "${V_BUILD_PKG_DIR}/qt5/qt5"
 pushd ${V_BUILD_PKG_DIR}/qt5/qt5
 
-git clone git://code.qt.io/qt/qt5.git .
+git clone https://github.com/qt/qt5.git .
 
 popd
 
