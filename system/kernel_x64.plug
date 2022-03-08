@@ -26,3 +26,12 @@ ret_val = void
 args = no
 desc = build linux kernel after menuconfig
 --end
+
+--begin
+type = script
+command = save_kernel
+exec = system/scripts/kernel_x64/save_kernel.sh
+ret_val = void
+args = no
+desc = save kernel in system/emulation/bzImage
+--end
