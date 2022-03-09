@@ -69,8 +69,15 @@ export MAKE=/usr/bin/make
     -linuxfb
 
 cmake --build . --parallel
-cmake --install
 
+popd
+
+if [ ! -d /opt/qt5 ]; then
+	mkdir -p /opt/qt5
+fi
+
+pushd /opt/qt5
+cmake --install /packages/qt5/qt5
 popd
 
 exit 0
