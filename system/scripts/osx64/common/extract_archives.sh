@@ -49,7 +49,7 @@ mkdir -p "${V_BUILD_PKG_DIR}/qt5/qt5"
 pushd ${V_BUILD_PKG_DIR}/qt5/qt5
 
 mkdir -p "$V_BUILD_PKG_DIR/qt5/qt5"
-cp -rv "${V_BUILD_ARCHIVE_DIR}/qt5/*" "$V_BUILD_PKG_DIR/qt5/qt5"
+cp -rv "${V_BUILD_ARCHIVE_DIR}/qt5/"* "$V_BUILD_PKG_DIR/qt5/qt5"
 
 popd
 
