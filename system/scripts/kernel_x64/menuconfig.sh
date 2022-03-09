@@ -30,6 +30,10 @@ sudo chroot "${V_BUILD_TREE_X86_64}" /usr/bin/env -i   \
 							PATH=/usr/bin:/usr/sbin     \
 							/bin/bash /parts/5-kernel/menuconfig.sh
 
+cp -v "${V_BUILD_TREE_X86_64}/parts/kernel_configs/*" \
+	"${V_BUILD_SYSTEM}/parts/kernel_configs/"
+
+
 exit 0
 
 
