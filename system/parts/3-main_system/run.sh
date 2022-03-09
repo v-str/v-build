@@ -93,6 +93,7 @@ pushd /parts/3-main_system
 ./sysklogd_pkg.sh
 ./sysvinit_pkg.sh
 ./rsync_pkg.sh
+./lfs_bootscripts.sh
 
 
 # COMMENT strip system
