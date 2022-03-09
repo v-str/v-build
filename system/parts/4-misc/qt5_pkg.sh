@@ -21,7 +21,8 @@ pushd /packages/${search_pkg}/${search_pkg}
 
 export MAKE=/usr/bin/make
 
-./configure -opensource \
+./configure --prefix=/opt/qt5 \
+	-opensource \
     -confirm-license \
     -nomake examples \
     -skip qtquickcontrols \

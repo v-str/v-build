@@ -78,7 +78,6 @@ static void _parse_order_list() {
 
       char *temp_cmd = get_command_from_line(temp);
       strcpy(_command, temp_cmd);
-      free(temp_cmd);
 
       if ((_element = find_element_by_command(_command)) == NULL) {
         char temp[COMMON_TEXT_SIZE] = "cannot find command \"";
