@@ -1,4 +1,6 @@
 # <file system>	<mount pt>	<type>	<options>	<dump>	<pass>
+/dev/sda2	/			root	defaults	1	1
+/dev/sda1	swap		swap	pri=1		0	0
 proc		/proc		proc	defaults	0	0
 devpts		/dev/pts	devpts	defaults,gid=5,mode=620,ptmxmode=0666	0	0
 tmpfs		/dev/shm	tmpfs	mode=0777	0	0
