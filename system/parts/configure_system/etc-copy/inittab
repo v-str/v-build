@@ -13,32 +13,29 @@
 # action    == one of sysinit, respawn, askfirst, wait, and once
 # process   == program to run
 
-# Startup the system
-::sysinit:/bin/mount -t proc proc /proc
-::sysinit:/bin/mount -o remount,rw /
-::sysinit:/bin/mkdir -p /dev/pts /dev/shm
-::sysinit:/bin/mount -a
-::sysinit:/sbin/swapon -a
-::sysinit:/bin/hostname -F /etc/hostname
-::sysinit:/bin/mount -o remount --rw /root
-::sysinit:/bin/mount -t tmpfs -o rw /sdz
+# Begin /etc/inittab
 
-# now run any rc scripts
-::sysinit:/etc/init.d/rcS
+id:3:initdefault:
 
-# Put a getty on the serial port
-# console::respawn:/sbin/getty -L  console 0 vt100 # GENERIC_SERIAL
+si::sysinit:/etc/rc.d/init.d/rc S
 
+l0:0:wait:/etc/rc.d/init.d/rc 0
+l1:S1:wait:/etc/rc.d/init.d/rc 1
+l2:2:wait:/etc/rc.d/init.d/rc 2
+l3:3:wait:/etc/rc.d/init.d/rc 3
+l4:4:wait:/etc/rc.d/init.d/rc 4
+l5:5:wait:/etc/rc.d/init.d/rc 5
+l6:6:wait:/etc/rc.d/init.d/rc 6
+
+ca:12345:ctrlaltdel:/sbin/shutdown -t1 -a -r now
+
+su:S016:once:/sbin/sulogin
+
+1:2345:respawn:/sbin/agetty --noclear tty1 9600
+2:2345:respawn:/sbin/agetty tty2 9600
+3:2345:respawn:/sbin/agetty tty3 9600
+`
 # AUTOLOGIN
 console::respawn:-/bin/login -f root
 
-# enable second virtual terminal
-tty2::respawn:/sbin/getty 38400 tty2
-
-# Stuff to do for the 3-finger salute
-#::ctrlaltdel:/sbin/reboot
-
-# Stuff to do before rebooting
-::shutdown:/etc/init.d/rcK
-::shutdown:/sbin/swapoff -a
-::shutdown:/bin/umount -a -r
+# End /etc/inittab
