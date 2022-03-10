@@ -1,7 +1,7 @@
 #!/bin/bash
 
 img="${PWD}/v-build.img"
-block_size=512
+block_size=1024
 cnt=8388608
 
 # 4Gb
