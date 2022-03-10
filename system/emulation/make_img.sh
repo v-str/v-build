@@ -15,13 +15,13 @@ losetup /dev/loop0 "${img}"
 parted --script /dev/loop0 \
 	unit mib \
 	mklabel gpt \
-	mkpart primary 1 30% \
-	set 2 swap on \
-	mkpart primary 30% 100%
+	mkpart primary 1% 30% \
+	set 1 swap on \
+	mkpart primary 30% 100% \
+	quit
 
 mkfs.ext4 /dev/loop0p2
 mkswap /dev/loop0p1
-swapon /dev/loop0p1
 
 parted /dev/loop0 print
 
