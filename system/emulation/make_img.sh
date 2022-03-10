@@ -21,12 +21,14 @@ parted --script /dev/loop0 \
 	set 2 swap on \
 	mkpart primary 30% 100%
 
-mkfs.ext4 /dev/loop0p2
+mkfs.ext4 /dev/loop0p3
+swapon /dev/loop0p2
+
 parted /dev/loop0 print
 
 mkdir /mnt/loopdev
 
-mount /dev/loop0p2 /mnt/loopdev
+mount /dev/loop0p3 /mnt/loopdev
 
 sudo cp -R ../../build/tree_x86_64/* /mnt/loopdev/
 sync
@@ -41,7 +43,7 @@ sync
 
 sync
 
-umount -v /dev/loop0p2
+umount -v /dev/loop0p3
 
 losetup -D
 sudo chown user:user v-build.img
