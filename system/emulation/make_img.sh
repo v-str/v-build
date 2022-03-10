@@ -22,6 +22,7 @@ parted --script /dev/loop0 \
 	mkpart primary 30% 100%
 
 mkfs.ext4 /dev/loop0p3
+mkswap /dev/loop0p2
 swapon /dev/loop0p2
 
 parted /dev/loop0 print
