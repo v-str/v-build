@@ -9,7 +9,7 @@
 echo "Starting urandom" > /dev/kmsg
 
 URANDOM="/dev/urandom"
-RANDOM_SEED="/sdz/random-seed"
+RANDOM_SEED="$HOME/random-seed"
 
 [ -c $URANDOM ] || exit 0
 #. /etc/default/rcS

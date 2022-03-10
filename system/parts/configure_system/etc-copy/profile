@@ -10,9 +10,7 @@ fi
 
 export PAGER='/bin/more'
 export EDITOR='/bin/vim'
-export HOME=/sdz
-export XORGCONFIG=/sdz/xorg.conf
-export XAUTHORITY=/sdz/.Xauthority
+export HOME=/root
 
 # Source configuration files from /etc/profile.d
 for i in /etc/profile.d/*.sh ; do

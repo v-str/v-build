@@ -18,7 +18,7 @@ UNICODE="1"
 KEYMAP="us"
 KEYMAP_CORRECTIONS="unicode"
 LEGACY_CHARSET="iso-8859-15"
-FONT="koi8r.8x8 -m 8859-15"
+FONT="koi8u_8x16 -m 8859-15"
 
 # End /etc/sysconfig/console
 EOF

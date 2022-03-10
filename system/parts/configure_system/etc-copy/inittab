@@ -15,7 +15,8 @@
 
 # Begin /etc/inittab
 
-id:3:initdefault:
+# for graphical usage - level 5
+id:5:initdefault:
 
 si::sysinit:/etc/rc.d/init.d/rc S
 
@@ -29,13 +30,15 @@ l6:6:wait:/etc/rc.d/init.d/rc 6
 
 ca:12345:ctrlaltdel:/sbin/shutdown -t1 -a -r now
 
-su:S016:once:/sbin/sulogin
+#su:S016:once:/sbin/sulogin
 
-1:2345:respawn:/sbin/agetty --noclear tty1 9600
+# AUTOLOGIN
+# console::respawn:-/bin/login -f root
+T0:2345:respawn:/sbin/agetty -a root -L tty1 9600
+
+#1:2345:respawn:/sbin/agetty --noclear tty1 9600
 2:2345:respawn:/sbin/agetty tty2 9600
 3:2345:respawn:/sbin/agetty tty3 9600
 `
-# AUTOLOGIN
-console::respawn:-/bin/login -f root
 
 # End /etc/inittab

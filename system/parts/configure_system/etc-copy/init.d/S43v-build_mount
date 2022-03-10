@@ -5,7 +5,7 @@
 # -----------------------------------------------------------------------------
 
 export HOME=/root
-export SDZ_LOG_FILE=$HOME/v-build_log
+export V_BUILD_LOG_FILE=$HOME/v-build_log
 export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/lib"
 
 mount_info=/root/mount_info
@@ -38,7 +38,7 @@ function construct_partition_list(){
     lsblk --fs $blk | sed '/NAME/d' | awk '{print $1,$2}' >> $blkd_info
   done
 
-  cat $blkd_info >> $SDZ_LOG_FILE
+  cat $blkd_info >> $V_BUILD_LOG_FILE
 }
 
 # ********************************************

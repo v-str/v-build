@@ -7,5 +7,4 @@ tmpfs		/dev/shm	tmpfs	mode=0777	0	0
 tmpfs		/tmp		tmpfs	mode=1777	0	0
 tmpfs		/run		tmpfs	mode=0755,nosuid,nodev	0	0
 sysfs		/sys		sysfs	defaults	0	0
-tmpfs		/sdz		tmpfs	rw,noauto	0	1
 tmpfs		/disk		tmpfs	rw,noauto	0	1
