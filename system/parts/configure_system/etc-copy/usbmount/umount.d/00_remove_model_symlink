@@ -1,0 +1,13 @@
+#!/bin/sh
+# This script removes the model name symlink in /disk/usb.
+
+set -e
+
+ls /disk/usb | while read name; do
+    if test "`readlink \"/disk/usb/$name\" || :`" = "$UM_MOUNTPOINT"; then
+	rm -f "/disk/usb/$name"
+	break
+    fi
+done
+
+exit 0

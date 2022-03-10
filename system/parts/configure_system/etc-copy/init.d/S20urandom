@@ -1,0 +1,56 @@
+#!/bin/sh
+#
+# urandom	This script saves the random seed between reboots.
+#		It is called from the boot, halt and reboot scripts.
+#
+# Version:	@(#)urandom  1.33  22-Jun-1998  miquels@cistron.nl
+#
+
+echo "Starting urandom" > /dev/kmsg
+
+URANDOM="/dev/urandom"
+RANDOM_SEED="/sdz/random-seed"
+
+[ -c $URANDOM ] || exit 0
+#. /etc/default/rcS
+
+case "$1" in
+	start|"")
+		# check for read only file system
+		if ! touch $RANDOM_SEED 2>/dev/null
+		then
+			echo "read-only file system detected...done" > /dev/kmsg
+			exit
+		fi
+		if [ "$VERBOSE" != no ]
+		then
+			printf "Initializing random number generator... " > /dev/kmsg
+		fi
+		# Load and then save 512 bytes,
+		# which is the size of the entropy pool
+		cat $RANDOM_SEED >$URANDOM
+		rm -f $RANDOM_SEED
+		umask 077
+		dd if=$URANDOM of=$RANDOM_SEED count=1 \
+			>/dev/null 2>&1 || echo "urandom start: failed." > /dev/kmsg
+		umask 022
+		[ "$VERBOSE" != no ] && echo "done."
+		;;
+	stop)
+		if ! touch $RANDOM_SEED 2>/dev/null
+		then
+			exit
+		fi
+		# Carry a random seed from shut-down to start-up;
+		# see documentation in linux/drivers/char/random.c
+		[ "$VERBOSE" != no ] && printf "Saving random seed... " > /dev/kmsg
+		umask 077
+		dd if=$URANDOM of=$RANDOM_SEED count=1 \
+			>/dev/null 2>&1 || echo "urandom stop: failed." > /dev/kmsg
+		[ "$VERBOSE" != no ] && echo "done." > /dev/kmsg
+		;;
+	*)
+		echo "Usage: urandom {start|stop}" >&2
+		exit 1
+		;;
+esac
