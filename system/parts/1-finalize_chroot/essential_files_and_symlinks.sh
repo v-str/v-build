@@ -54,11 +54,6 @@ nogroup:x:99:
 users:x:999:
 EOF
 
-# for testing
-echo "tester:x:101:101::/home/tester:/bin/bash" >> /etc/passwd
-echo "tester:x:101:" >> /etc/group
-install -o tester -d /home/tester
-
 touch /var/log/{btmp,lastlog,faillog,wtmp}
 chgrp -v utmp /var/log/lastlog
 chmod -v 664  /var/log/lastlog
