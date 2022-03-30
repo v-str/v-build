@@ -8,8 +8,11 @@ linux=`ls / | grep linux`
 
 ls -lh /parts/kernel_configs/
 
-printf "\n1. CONFIG_NAME
-2. skip\n"
+printf "
+Choose config:
+1. CONFIG_NAME
+2. skip
+"
 
 read -p 'Operation: ' var
 
@@ -20,9 +23,11 @@ else
 	cd $linux && make menuconfig
 fi
 
-printf "\nSave config?\n
+printf "
+Save config?
 1. CONFIG_NAME
-2. skip\n"
+2. skip
+"
 
 read -p 'Operation: ' var
 

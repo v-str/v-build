@@ -15,8 +15,10 @@ fi
 
 linux=`ls "${V_BUILD_TREE_X86_64}/" | grep linux`
 
-cp -v "${V_BUILD_TREE_X86_64}/$linux/arch/x86/boot/bzImage" \
+cp "${V_BUILD_TREE_X86_64}/$linux/arch/x86/boot/bzImage" \
 	"${V_BUILD_SYSTEM}/emulation/bzImage"
+
+printf "bzImage copied into system/emulation/\n"
 
 sync
 

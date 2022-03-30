@@ -21,7 +21,7 @@ fi
 msg_green "Copy parts scripts into:" "${V_BUILD_TREE_X86_64}"
 
 sudo rm -rf "${V_BUILD_TREE_X86_64}/parts"
-sudo cp -vr "${V_BUILD_SYSTEM}/parts" "${V_BUILD_TREE_X86_64}/"
+sudo cp -r "${V_BUILD_SYSTEM}/parts" "${V_BUILD_TREE_X86_64}/"
 
 sudo chroot "${V_BUILD_TREE_X86_64}" /usr/bin/env -i   \
 							HOME=/root                  \
@@ -30,8 +30,10 @@ sudo chroot "${V_BUILD_TREE_X86_64}" /usr/bin/env -i   \
 							PATH=/usr/bin:/usr/sbin     \
 							/bin/bash /parts/5-kernel/menuconfig.sh
 
-cp -v "${V_BUILD_TREE_X86_64}/parts/kernel_configs/"* \
+cp "${V_BUILD_TREE_X86_64}/parts/kernel_configs/"* \
 	"${V_BUILD_SYSTEM}/parts/kernel_configs/"
+
+printf "\nkernel configs copied into tree/parts/kernel_configs\n"
 
 
 exit 0
