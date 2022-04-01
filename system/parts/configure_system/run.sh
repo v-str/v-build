@@ -1,5 +1,8 @@
 #!/bin/bash
 
+rm /etc/group
+rm /etc/passwd
+
 cp -r etc-copy/* /etc/
 
 cat > /etc/shells << "EOF"
@@ -25,9 +28,9 @@ EOF
 
 locale -a
 
-rm /etc/group-
-rm /etc/passwd-
-
+pushd /parts/configure_system/bootscripts
+make install
+popd
 
 exit 0
 

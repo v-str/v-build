@@ -11,6 +11,15 @@
 
 --begin
 type = script
+command = place_kernel
+exec = system/scripts/kernel_x64/place_kernel.sh
+ret_val = void
+args = no
+desc = place kernel inside tree
+--end
+
+--begin
+type = script
 command = menuconfig
 exec = system/scripts/kernel_x64/menuconfig.sh
 ret_val = void
@@ -34,15 +43,6 @@ exec = system/scripts/kernel_x64/save_kernel.sh
 ret_val = void
 args = no
 desc = save kernel in system/emulation/bzImage
---end
-
---begin
-type = script
-command = place_kernel
-exec = system/scripts/kernel_x64/place_kernel.sh
-ret_val = void
-args = no
-desc = place kernel inside tree
 --end
 
 --begin

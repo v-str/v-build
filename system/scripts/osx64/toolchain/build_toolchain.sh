@@ -27,6 +27,7 @@ if [ ! -d "$OSXDIR" ]; then
 	exit 1
 fi
 
+#${OSXDIR}/toolchain/set_name_x86_64.sh
 #${OSXDIR}/toolchain/make_binutils_x86_64_pass_1.sh
 #${OSXDIR}/toolchain/make_gcc_x86_64_pass_1.sh
 #${OSXDIR}/toolchain/install_kernel_headers.sh

@@ -10,15 +10,6 @@
 #   --end
 
 --begin
-type = script
-command = osx64_set_machine_name
-exec = system/scripts/osx64/toolchain/set_name_x86_64.sh
-ret_val = void
-args = no
-desc = set proper TGT name, saved in .machine_name
---end
-
---begin
 type = bin
 command = osx64_export_variables
 exec = system/libs/libosx64_lib.so.1.0.0
@@ -43,24 +34,6 @@ exec = system/scripts/osx64/common/check_export_vars.sh
 ret_val = void
 args = no
 desc = check assigned variables
---end
-
---begin
-type = script
-command = osx64_create_all_dirs
-exec = system/scripts/osx64/common/create_all_dirs.sh
-ret_val = void
-args = no
-desc = prepare directory for os building, create directories
---end
-
---begin
-type = script
-command = osx64_remove_all_dirs
-exec = system/scripts/osx64/common/remove_all_dirs.sh
-ret_val = void
-args = no
-desc = remove all build-related directories
 --end
 
 --begin
@@ -108,114 +81,6 @@ args = no
 desc = build binutils, gcc, libstd, etc.
 --end
 
-#--begin
-#type = script
-#command = osx64_binutils_pass_1
-#exec = system/scripts/osx64/toolchain/make_binutils_x86_64_pass_1.sh
-#ret_val = void
-#args = no
-#desc = build binutils pass 1
-#--end
-
-#--begin
-#type = script
-#command = osx64_gcc_pass_1
-#exec = system/scripts/osx64/toolchain/make_gcc_x86_64_pass_1.sh
-#ret_val = void
-#args = no
-#desc = build gcc pass 1
-#--end
-
-#--begin
-#type = script
-#command = osx64_install_kernel_headers
-#exec = system/scripts/osx64/toolchain/install_kernel_headers.sh
-#ret_val = void
-#args = no
-#desc = install kernel headers into building tree
-#--end
-
-#--begin
-#type = script
-#command = osx64_glibc
-#exec = system/scripts/osx64/toolchain/make_glibc_x86_64.sh
-#ret_val = void
-#args = no
-#desc = build glibc
-#--end
-
-#--begin
-#type = script
-#command = osx64_gcc_mkheaders
-#exec = system/scripts/osx64/toolchain/gcc_mkheaders.sh
-#ret_val = void
-#args = no
-#desc = copy gcc headers
-#--end
-
-#--begin
-#type = script
-#command = osx64_libstd_cpp_pass_1
-#exec = system/scripts/osx64/toolchain/make_libstdcpp_x86_64_pass_1.sh
-#ret_val = void
-#args = no
-#desc = build lib std cpp
-#--end
-
-#--begin
-#type = script
-#command = osx64_sysutils
-#exec = system/scripts/osx64/toolchain/make_sys_utils.sh
-#ret_val = void
-#args = no
-#desc = build system utilities
-#--end
-
-#--begin
-#type = script
-#command = osx64_binutils_pass_2
-#exec = system/scripts/osx64/toolchain/make_binutils_x86_64_pass_2.sh
-#ret_val = void
-#args = no
-#desc = build binutils pass 2
-#--end
-
-#--begin
-#type = script
-#command = osx64_gcc_pass_2
-#exec = system/scripts/osx64/toolchain/make_gcc_x86_64_pass_2.sh
-#ret_val = void
-#args = no
-#desc = build gcc pass 2
-#--end
-
-#--begin
-#type = script
-#command = chown_tree_to_root
-#exec = system/scripts/osx64/root_deps/chown_tree.sh
-#ret_val = void
-#args = no
-#desc = change ownership of tree
-#--end
-
-#--begin
-#type = script
-#command = mount_vkfs
-#exec = system/scripts/osx64/root_deps/mount_vkfs.sh
-#ret_val = void
-#args = no
-#desc = mount virtual kernel file system
-#--end
-
-#--begin
-#type = script
-#command = unmount_vkfs
-#exec = system/scripts/osx64/root_deps/unmount_vkfs.sh
-#ret_val = void
-#args = no
-#desc = unmount virtual kernel file system
-#--end
-
 --begin
 type = script
 command = chroot
@@ -223,22 +88,4 @@ exec = system/scripts/osx64/root_deps/chroot.sh
 ret_val = void
 args = no
 desc = chroot into tree for build system
---end
-
---begin
-type = script
-command = pack_tree
-exec = system/scripts/osx64/common/pack_tree.sh
-ret_val = void
-args = char*
-desc = save temp tree in $V_BUILD_DIR (tarname)
---end
-
---begin
-type = script
-command = unpack_tree
-exec = system/scripts/osx64/common/unpack_tree.sh
-ret_val = void
-args = char*, char*
-desc = unpack the tree in $V_BUILD_DIR (tarname, treename)
 --end
