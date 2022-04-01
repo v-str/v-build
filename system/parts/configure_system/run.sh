@@ -25,6 +25,9 @@ EOF
 
 locale -a
 
+rm /etc/group-
+rm /etc/passwd-
+
 
 exit 0
 

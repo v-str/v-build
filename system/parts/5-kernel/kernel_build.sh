@@ -6,6 +6,12 @@ NC='\033[0m'
 
 linux=`ls / | grep linux`
 
+if [ -z "$linux" ]; then
+    printf "linux-* directory doesn't exist, you need to run: \"place_kernel\"
+    command\n"
+    exit 1
+fi
+
 if [ ! -d "$linux" ]; then
 	printf "Linux kernel directory does not exist. Exit\n"
 	exit 1

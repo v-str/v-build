@@ -2,9 +2,9 @@
 
 img="${PWD}/v-build.img"
 block_size=1024
-cnt=8388608
+cnt=2097152
 
-# 8Gb
+# 2Gb
 
 rm -rf ${img}
 touch ${img}
@@ -43,11 +43,7 @@ sync
 
 sync
 
-umount -v /dev/loop0p2
+umount -v /dev/loop0p3
 
 losetup -D
 sudo chown user:user v-build.img
-
-#sudo find . | sudo cpio --quiet -H newc -o | sudo gzip -9 -n > fs.img
-
-#sudo chown user:user fs.img
