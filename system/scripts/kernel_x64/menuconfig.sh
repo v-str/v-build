@@ -13,10 +13,19 @@ if [ ! -d "${V_BUILD_TREE_X86_64}" ]; then
 	exit 1
 fi
 
-if [ ! -e "${V_BUILD_DIR}/.vkfs_mounted" ]; then
-	msg_red "chroot fail:" "first, you need to prepare virtual kernel fs"
+KDIR="${V_BUILD_SYSTEM}/scripts/kernel_x64"
+
+if [ ! -d "$KDIR" ]; then
+	msg_red "Failure to find directory: " "$KDIR"
+	exit 1
+fi
+
+if [ -e "${V_BUILD_DIR}/.vkfs_mounted" ]; then
+	msg_red "chroot fail:" "remove .vkfs_mounted file"
 	exit 0
 fi
+
+${KDIR}/mount_vkfs.sh
 
 msg_green "Copy parts scripts into:" "${V_BUILD_TREE_X86_64}"
 
@@ -35,6 +44,7 @@ cp "${V_BUILD_TREE_X86_64}/parts/kernel_configs/"* \
 
 printf "\nkernel configs copied into tree/parts/kernel_configs\n"
 
+${KDIR}/unmount_vkfs.sh
 
 exit 0
 
