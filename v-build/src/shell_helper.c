@@ -159,7 +159,7 @@ void print_loaded_functions() {
     strcpy(trunc_name, strrchr(elem->plugin_name, '/') + 1);
 
     if (strcmp(name_comparator, trunc_name) != 0) {
-      strcpy(name_comparator, OS_COLOR_BLUE);
+      strcpy(name_comparator, OS_COLOR_YELLOW);
       strcat(name_comparator, trunc_name);
       strcat(name_comparator, OS_NO_COLOR);
       print_info_msg(name_comparator, ":", YES);
