@@ -16,16 +16,25 @@ if [ ! -d "${V_BUILD_TREE_X86_64}" ]; then
 	exit 1
 fi
 
-if [ ! -e "${V_BUILD_DIR}/.vkfs_mounted" ]; then
-	msg_red "chroot fail:" "first, you need to prepare virtual kernel fs"
+OSXDIR="${V_BUILD_SYSTEM}/scripts/osx64"
+
+if [ ! -d "$OSXDIR" ]; then
+	msg_red "Failure to find directory: " "$OSXDIR"
+	exit 1
+fi
+
+if [ -e "${V_BUILD_DIR}/.vkfs_mounted" ]; then
+	msg_red "chroot fail:" "something wrong, remove file \.vkfs_mounted and try again."
 	exit 0
 fi
+
+${OSXDIR}/root_deps/mount_vkfs.sh
 
 msg_green "Copy part scripts into:" "${V_BUILD_TREE_X86_64}"
 
 sudo rm -rf "${V_BUILD_TREE_X86_64}/parts"
-sudo cp -vr "${V_BUILD_SYSTEM}/parts" "${V_BUILD_TREE_X86_64}/"
-sudo cp -vr "${V_BUILD_DIR}/patches" "${V_BUILD_TREE_X86_64}/"
+sudo cp -r "${V_BUILD_SYSTEM}/parts" "${V_BUILD_TREE_X86_64}/"
+sudo cp -r "${V_BUILD_DIR}/patches" "${V_BUILD_TREE_X86_64}/"
 
 msg_green "chroot into: " "${V_BUILD_TREE_X86_64}"
 
@@ -41,6 +50,8 @@ sudo chroot "${V_BUILD_TREE_X86_64}" /usr/bin/env -i   \
 							/bin/bash
 
 msg_green "status:" "exit chroot"
+
+${OSXDIR}/root_deps/unmount_vkfs.sh
 
 exit 0
 
