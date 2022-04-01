@@ -27,16 +27,17 @@ if [ ! -d "$OSXDIR" ]; then
 	exit 1
 fi
 
-${OSXDIR}/toolchain/make_binutils_x86_64_pass_1.sh
-${OSXDIR}/toolchain/make_gcc_x86_64_pass_1.sh
-${OSXDIR}/toolchain/install_kernel_headers.sh
-${OSXDIR}/toolchain/make_glibc_x86_64.sh
-${OSXDIR}/toolchain/gcc_mkheaders.sh
-${OSXDIR}/toolchain/make_libstdcpp_x86_64_pass_1.sh
-${OSXDIR}/toolchain/make_sys_utils.sh
-${OSXDIR}/toolchain/make_binutils_x86_64_pass_2.sh
-${OSXDIR}/toolchain/make_gcc_x86_64_pass_2.sh
-${OSXDIR}/root_deps/chown_tree.sh
+#${OSXDIR}/toolchain/make_binutils_x86_64_pass_1.sh
+#${OSXDIR}/toolchain/make_gcc_x86_64_pass_1.sh
+#${OSXDIR}/toolchain/install_kernel_headers.sh
+#${OSXDIR}/toolchain/make_glibc_x86_64.sh
+#${OSXDIR}/toolchain/gcc_mkheaders.sh
+#${OSXDIR}/toolchain/make_libstdcpp_x86_64_pass_1.sh
+#${OSXDIR}/toolchain/make_sys_utils.sh
+#${OSXDIR}/toolchain/make_binutils_x86_64_pass_2.sh
+#${OSXDIR}/toolchain/make_gcc_x86_64_pass_2.sh
+#${OSXDIR}/root_deps/chown_tree.sh
+${OSXDIR}/root_deps/chroot-1-finalize.sh
 
 
 
