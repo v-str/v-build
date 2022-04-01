@@ -24,14 +24,14 @@ if [ ! -d "$OSXDIR" ]; then
 fi
 
 if [ -e "${V_BUILD_DIR}/.vkfs_mounted" ]; then
-	msg_red "chroot fail:" "something wrong, remove file \.vkfs_mounted and try again."
+	msg_red "chroot fail:" "something wrong, remove file .vkfs_mounted and try again."
 	exit 0
 fi
 
 ${OSXDIR}/root_deps/mount_vkfs.sh
 
 msg_green "Re-extraction..."
-rm -rf ${V_BUILD_PKG_DIR} && mkdir ${V_BUILD_PKG_DIR}
+sudo rm -rf ${V_BUILD_PKG_DIR} && mkdir ${V_BUILD_PKG_DIR}
 ${V_BUILD_SYSTEM}/scripts/osx64/common/extract_archives.sh
 
 msg_green "Copy part scripts into:" "${V_BUILD_TREE_X86_64}"
