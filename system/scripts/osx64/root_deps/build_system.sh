@@ -53,6 +53,20 @@ sudo chroot "${V_BUILD_TREE_X86_64}" /usr/bin/env -i   \
 							PATH=/usr/bin:/usr/sbin     \
 							/parts/2-temp_system/run.sh
 
+sudo chroot "${V_BUILD_TREE_X86_64}" /usr/bin/env -i   \
+							HOME=/root                  \
+							TERM="vt100"                \
+							PS1='(v-build chroot) \u:\w\$ ' \
+							PATH=/usr/bin:/usr/sbin     \
+							/parts/3-main_system/run.sh
+
+sudo chroot "${V_BUILD_TREE_X86_64}" /usr/bin/env -i   \
+							HOME=/root                  \
+							TERM="vt100"                \
+							PS1='(v-build chroot) \u:\w\$ ' \
+							PATH=/usr/bin:/usr/sbin     \
+							/parts/configure_system/run.sh
+
 msg_green "status:" "exit chroot"
 
 ${OSXDIR}/root_deps/unmount_vkfs.sh
