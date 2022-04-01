@@ -16,9 +16,9 @@ fi
 msg_green "preparing:" "unmounting Virtual Kernel File System"
 
 if [ -e "${V_BUILD_DIR}/.vkfs_mounted" ]; then
-	sudo umount -v ${V_BUILD_TREE_X86_64}/dev/pts
-	sudo umount -v ${V_BUILD_TREE_X86_64}/{sys,proc,run}
-	sudo umount -v ${V_BUILD_TREE_X86_64}/dev
+	sudo umount -vl ${V_BUILD_TREE_X86_64}/dev/pts
+	sudo umount -vl ${V_BUILD_TREE_X86_64}/{sys,proc,run}
+	sudo umount -vl ${V_BUILD_TREE_X86_64}/dev
 	rm ${V_BUILD_DIR}/.vkfs_mounted
 fi
 
