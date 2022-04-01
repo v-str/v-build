@@ -25,6 +25,10 @@ if [ -e "${V_BUILD_DIR}/.vkfs_mounted" ]; then
 	exit 0
 fi
 
+msg_green "" "Before purifying"
+
+sudo du -shc ${V_BUILD_TREE_X86_64}/
+
 ${OSXDIR}/root_deps/mount_vkfs.sh
 
 msg_green "Copy part scripts into:" "${V_BUILD_TREE_X86_64}"
@@ -44,11 +48,15 @@ sudo chroot "${V_BUILD_TREE_X86_64}" /usr/bin/env -i   \
 							TERM="vt100"                \
 							PS1='(v-build chroot) \u:\w\$ ' \
 							PATH=/usr/bin:/usr/sbin     \
-							/parts/1-finalize_chroot/run.sh
+							/parts/configure_system/purify.sh
 
 msg_green "status:" "exit chroot"
 
 ${OSXDIR}/root_deps/unmount_vkfs.sh
+
+msg_green "" "After purifying"
+
+sudo du -shc ${V_BUILD_TREE_X86_64}/
 
 exit 0
 

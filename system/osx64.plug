@@ -98,3 +98,12 @@ ret_val = void
 args = no
 desc = chroot into tree for build system
 --end
+
+--begin
+type = script
+command = purify
+exec = system/scripts/osx64/root_deps/purify.sh
+ret_val = void
+args = no
+desc = purify system before deploying
+--end

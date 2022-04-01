@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# when basic system is complete, chroot using this script
-# login without hashing
-
 GREEN='\033[0;32m'
 RED='\033[0;31m'
 NC='\033[0m'
