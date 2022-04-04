@@ -43,7 +43,7 @@ sync
 
 sync
 
-umount -v /dev/loop0p3
+umount -v /dev/loop0p2
 
 losetup -D
 sudo chown user:user v-build.img
