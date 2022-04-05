@@ -2,6 +2,8 @@
 
 # purifying system, remove excess files and directories
 
+echo "purifying ... "
+
 pushd /
 
 rm -rf linux-*
