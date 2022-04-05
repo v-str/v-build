@@ -37,6 +37,7 @@ echo "rootsbindir=/usr/sbin" > configparms
              --disable-werror                         \
              --enable-kernel=3.2                      \
              --enable-stack-protector=strong          \
+             --disable-timezone-tools                 \
              --with-headers=/usr/include              \
              libc_cv_slibdir=/usr/lib
 

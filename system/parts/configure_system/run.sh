@@ -1,9 +1,11 @@
 #!/bin/bash
 
-rm /etc/group
-rm /etc/passwd
+rm -v /etc/group
+rm -v /etc/passwd
 
-cp -r etc-copy/* /etc/
+sleep 3
+
+cp -rv /parts/configure_system/etc-copy/* /etc/
 
 cat > /etc/shells << "EOF"
 # Begin /etc/shells

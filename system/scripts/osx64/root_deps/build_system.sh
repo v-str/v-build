@@ -6,6 +6,10 @@ NC='\033[0m'
 
 function msg(){ printf "${NC}$1 $2${NC}\n" ; }
 function msg_green(){ printf "\n${NC}$1 ${GREEN}$2${NC}\n\n" ; }
+function msg_green_sleep(){ 
+	printf "\n${NC}$1 ${GREEN}$2${NC}\n\n" ;
+	sleep 5 ;
+}
 function msg_red(){ printf "\n${NC}$1 ${RED}$2${NC}\n\n" ; }
 
 if [ ! -d "${V_BUILD_TREE_X86_64}" ]; then
@@ -43,6 +47,8 @@ if [ ! -d "${V_BUILD_TREE_X86_64}/packages" ]; then
 	mkdir ${V_BUILD_TREE_X86_64}/packages
 fi
 
+msg_green_sleep "Stage 2: " "build temp system"
+
 sudo chroot "${V_BUILD_TREE_X86_64}" /usr/bin/env -i   \
 							HOME=/root                  \
 							TERM="vt100"                \
@@ -50,6 +56,7 @@ sudo chroot "${V_BUILD_TREE_X86_64}" /usr/bin/env -i   \
 							PATH=/usr/bin:/usr/sbin     \
 							/parts/2-temp_system/run.sh
 
+msg_green_sleep "Stage 3: " "build main system"
 sudo chroot "${V_BUILD_TREE_X86_64}" /usr/bin/env -i   \
 							HOME=/root                  \
 							TERM="vt100"                \
@@ -57,6 +64,7 @@ sudo chroot "${V_BUILD_TREE_X86_64}" /usr/bin/env -i   \
 							PATH=/usr/bin:/usr/sbin     \
 							/parts/3-main_system/run.sh
 
+msg_green_sleep "Stage 4: " "configure system"
 sudo chroot "${V_BUILD_TREE_X86_64}" /usr/bin/env -i   \
 							HOME=/root                  \
 							TERM="vt100"                \
