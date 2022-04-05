@@ -22,11 +22,6 @@ sudo mknod -m 666 ${V_BUILD_TREE_X86_64}/dev/null c 1 3
 
 msg_green "stage:" "mounting"
 
-if [ -e "${V_BUILD_DIR}/.vkfs_mounted" ]; then
-	msg_green "mount:" "Virtual Kernel File System already mounted"
-	exit 0
-fi
-
 sudo mount -v --bind /dev ${V_BUILD_TREE_X86_64}/dev
 sudo mount -v --bind /dev/pts ${V_BUILD_TREE_X86_64}/dev/pts
 sudo mount -vt proc proc ${V_BUILD_TREE_X86_64}/proc
@@ -36,8 +31,6 @@ sudo mount -vt tmpfs tmpfs ${V_BUILD_TREE_X86_64}/run
 if [ -h ${V_BUILD_TREE_X86_64}/dev/shm ]; then
   sudo mkdir -pv ${V_BUILD_TREE_X86_64}/$(readlink ${V_BUILD_TREE_X86_64}/dev/shm)
 fi
-
-echo "mounted" >> ${V_BUILD_DIR}/.vkfs_mounted
 
 msg_green "status:" "done"
 

@@ -20,11 +20,6 @@ if [ ! -d "$OSXDIR" ]; then
 	exit 1
 fi
 
-if [ -e "${V_BUILD_DIR}/.vkfs_mounted" ]; then
-	msg_red "chroot fail:" "something wrong, remove file \.vkfs_mounted and try again."
-	exit 0
-fi
-
 ${OSXDIR}/root_deps/mount_vkfs.sh
 
 msg_green "Copy part scripts into:" "${V_BUILD_TREE_X86_64}"

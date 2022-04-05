@@ -20,13 +20,8 @@ if [ ! -d "$KDIR" ]; then
 	exit 1
 fi
 
-if [ -e "${V_BUILD_DIR}/.vkfs_mounted" ]; then
-	msg_red "chroot fail:" "remove .vkfs_mounted file"
-	exit 0
-fi
 
 ${KDIR}/mount_vkfs.sh
-
 
 msg_green "Copy parts scripts into:" "${V_BUILD_TREE_X86_64}"
 

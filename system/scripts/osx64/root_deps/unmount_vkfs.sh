@@ -9,7 +9,7 @@ function msg_green(){ printf "\n${NC}$1 ${GREEN}$2${NC}\n\n" ; }
 function msg_red(){ printf "\n${NC}$1 ${RED}$2${NC}\n\n" ; }
 
 if [ ! -d "${V_BUILD_TREE_X86_64}" ]; then
-	msg_red "\$V_BUILD_TREE" "do not exist!"
+	msg_red "finale.tree" "do not exist!"
 	exit 1
 fi
 
