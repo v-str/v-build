@@ -30,7 +30,7 @@ mkdir /mnt/loopdev
 
 mount /dev/loop0p2 /mnt/loopdev
 
-sudo cp -R ../../build/tree_x86_64/* /mnt/loopdev/
+sudo cp -R ../../build/final.tree/* /mnt/loopdev/
 sync
 
 #cp -v "${PWD}/bzImage" "/mnt/loopdev/boot/bzImage"

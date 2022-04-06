@@ -1,7 +1,7 @@
 #!/bin/bash
 
-rm -v /etc/group
-rm -v /etc/passwd
+rm -v /etc/group*
+rm -v /etc/passwd*
 
 sleep 3
 

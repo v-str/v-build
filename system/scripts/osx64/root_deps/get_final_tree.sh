@@ -39,7 +39,8 @@ fi
 mkdir "${V_BUILD_DIR}/${FINAL_TREE}" 
 
 msg_green "in progress: " "rsync ..."
-sudo rsync -ahq ${V_BUILD_TREE_X86_64}/* ${V_BUILD_DIR}/${FINAL_TREE}/
+sudo rsync -ah --exclude 'linux*/*' --exclude 'packages' \
+	${V_BUILD_TREE_X86_64}/* ${V_BUILD_DIR}/${FINAL_TREE}/
 sudo chown -R root:root ${V_BUILD_DIR}/${FINAL_TREE}
 msg_green "rsync: " "done"
 
@@ -49,7 +50,7 @@ sudo cp -v "${V_BUILD_SYSTEM}/parts/configure_system/purify.sh" \
 	${V_BUILD_DIR}/${FINAL_TREE}
 
 msg_green "chrooting into: " "final.tree"
-
+sleep 1
 sudo chroot "${V_BUILD_DIR}/${FINAL_TREE}" /usr/bin/env -i   \
 							HOME=/root                  \
 							TERM="vt100"                \
