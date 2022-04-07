@@ -12,12 +12,13 @@ function msg_red(){ printf "\n${NC}$1 ${RED}$2${NC}\n" ; }
 if [ ! -d "${V_BUILD_TREE_X86_64}" ]; then
 	msg_red "\$V_BUILD_TREE" "do not exist!"
 	exit 1
-elif
+else
 	pushd "${V_BUILD_TREE_X86_64}"
-	linux_dir=ls | grep linux*
+	linux_dir=`ls | grep linux*`
 	if [ -d "$linux_dir" ]; then
 		sudo rm -rfv $linux_dir
 	fi
+	popd
 fi
 
 sync
