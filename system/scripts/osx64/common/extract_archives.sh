@@ -7,6 +7,8 @@ RED='\033[0;31m'
 NC='\033[0m'
 PKG_COUNTER=1
 
+user=`whoami`
+
 function msg(){ printf "${NC}$1 $2${NC}\n" ; }
 function msg_green(){ printf "${NC}$1 ${GREEN}$2${NC}" ; }
 function msg_red(){ printf "${NC}$1 ${RED}$2${NC}" ; }
@@ -17,6 +19,9 @@ if [ -e "$V_BUILD_PKG_DIR" ]; then
 		printf "Directory \"archives\" doesn't exist\n"
 		exit 1
 	fi
+
+	sudo rm -rf $V_BUILD_PKG_DIR
+	mkdir $V_BUILD_PKG_DIR
 
 	for archive in $V_BUILD_ARCHIVE_DIR/*.*; do
 

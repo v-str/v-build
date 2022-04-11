@@ -94,6 +94,10 @@ pushd /parts/3-main_system
 ./sysvinit_pkg.sh
 ./rsync_pkg.sh
 ./lfs_bootscripts.sh
+./libpng_pkg.sh
+./which_pkg.sh
+./freetype_pkg.sh
+./fontconfig_pkg.sh
 
 
 # COMMENT strip system
