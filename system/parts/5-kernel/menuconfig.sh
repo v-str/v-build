@@ -33,6 +33,8 @@ printf "
 Save config?
 1. CONFIG_NAME
 2. skip
+
+say skip, not 2
 "
 
 read -p 'Operation: ' var
