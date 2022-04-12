@@ -22,7 +22,9 @@ pushd /packages/${search_pkg}/${search_pkg}
 export MAKE=/usr/bin/make
 
 ./configure --prefix=/opt/qt5 \
-	-opensource \
+    -opensource \
+    -release \
+    -optimize-size \
     -confirm-license \
     -nomake examples \
     -skip qtquickcontrols \
@@ -57,15 +59,15 @@ export MAKE=/usr/bin/make
     -skip qtquick3d \
     -skip qtscxml \
     -skip qtvirtualkeyboard \
-	-skip qtwebview \
+    -skip qtwebview \
     -no-libjpeg \
     -no-mtdev \
     -no-xcb \
-    -qt-freetype \
-    -no-fontconfig \
+    -freetype \
+    -libpng \
     -no-xcb-xlib \
     -no-pulseaudio \
-	-no-opengl \
+    -no-opengl \
     -linuxfb
 
 cmake --build . --parallel

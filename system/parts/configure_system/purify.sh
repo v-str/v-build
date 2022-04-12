@@ -11,6 +11,7 @@ du -sch *
 
 rm -rfv linux-*
 rm -rfv packages/*
+rm -rfv parts/*
 rm -rfv patches/*
 rm -rfv lib/python-*/test
 rm -rfv usr/bin/git
