@@ -5,8 +5,16 @@ rm -v /etc/passwd*
 
 sleep 3
 
+# etc
 cp -rv /parts/configure_system/etc-copy/* /etc/
 
+# fonts
+if [ ! -d "/usr/share/fonts" ]; then
+	mkdir /usr/share/fonts
+	cp -R /parts/configure_system/fonts/* /usr/share/fonts/
+fi
+
+# other
 cat > /etc/shells << "EOF"
 # Begin /etc/shells
 
