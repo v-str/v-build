@@ -98,6 +98,12 @@ pushd /parts/3-main_system
 ./which_pkg.sh
 ./freetype_pkg.sh
 ./fontconfig_pkg.sh
+
+# COMMENT liburcu, multipath-tools before parted
+./liburcu_pkg.sh
+./libaio_pkg.sh
+./lvm2_pkg.sh
+
 ./parted_pkg.sh
 ./libusb_pkg.sh
 ./talloc_pkg.sh

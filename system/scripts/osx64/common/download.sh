@@ -18,3 +18,12 @@ fi
 wget --input-file=$PKG_LIST --continue --directory-prefix=$V_BUILD_ARCHIVE_DIR
 wget --input-file=$PATCH_LIST --continue --directory-prefix=$V_BUILD_PATCH_DIR
 
+pushd $V_BUILD_ARCHIVE_DIR
+
+mtools=`ls | grep 0.8.9`
+mv -v $mtools "multipath-tools-0.8.9.tar.gz"
+
+popd
+
+exit 0
+
