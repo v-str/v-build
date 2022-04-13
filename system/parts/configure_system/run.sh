@@ -12,6 +12,7 @@ cp -rv /parts/configure_system/etc-copy/* /etc/
 if [ ! -d "/usr/share/fonts" ]; then
 	mkdir /usr/share/fonts
 	cp -rv /parts/configure_system/fonts/* /usr/share/fonts/
+	ln -s /usr/share/fonts /usr/lib/fonts
 fi
 
 # other

@@ -98,6 +98,12 @@ pushd /parts/3-main_system
 ./which_pkg.sh
 ./freetype_pkg.sh
 ./fontconfig_pkg.sh
+./parted_pkg.sh
+./libusb_pkg.sh
+./talloc_pkg.sh
+./libuuid_pkg.sh
+./krb5_pkg.sh
+./pcsc-lite_pkg.sh
 
 
 # COMMENT strip system
