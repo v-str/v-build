@@ -19,8 +19,9 @@ fi
 
 pushd /packages/${search_pkg}/${search_pkg}
 
-./bootstrap
-./configure --prefix=/usr
+./configure \
+    --prefix=/usr \
+    --disable-libsystemd
 
 make -j`nproc`
 make install

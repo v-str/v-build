@@ -34,6 +34,9 @@ pushd build
 echo "rootsbindir=/usr/sbin" > configparms
 
 ../configure --prefix=/usr                            \
+             --enable-shared                          \
+             --disable-profile                        \
+             --without-gd                             \
              --disable-werror                         \
              --enable-kernel=3.2                      \
              --enable-stack-protector=strong          \

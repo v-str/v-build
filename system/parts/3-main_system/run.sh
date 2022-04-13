@@ -103,8 +103,8 @@ pushd /parts/3-main_system
 ./liburcu_pkg.sh
 ./libaio_pkg.sh
 ./lvm2_pkg.sh
-
 ./parted_pkg.sh
+
 ./libusb_pkg.sh
 ./talloc_pkg.sh
 ./libuuid_pkg.sh

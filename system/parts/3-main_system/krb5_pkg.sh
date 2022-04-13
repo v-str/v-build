@@ -19,10 +19,14 @@ fi
 
 pushd /packages/${search_pkg}/${search_pkg}
 
+pushd src
+
 ./configure --prefix=/usr
 
 make -j`nproc`
 make install
+
+popd
 
 popd
 
