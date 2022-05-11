@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# when basic system is complete, chroot using this script
-# login without hashing
-
 GREEN='\033[0;32m'
 RED='\033[0;31m'
 NC='\033[0m'
@@ -21,11 +18,6 @@ OSXDIR="${V_BUILD_SYSTEM}/scripts/osx64"
 if [ ! -d "$OSXDIR" ]; then
 	msg_red "Failure to find directory: " "$OSXDIR"
 	exit 1
-fi
-
-if [ -e "${V_BUILD_DIR}/.vkfs_mounted" ]; then
-	msg_red "chroot fail:" "something wrong, remove file \.vkfs_mounted and try again."
-	exit 0
 fi
 
 ${OSXDIR}/root_deps/mount_vkfs.sh

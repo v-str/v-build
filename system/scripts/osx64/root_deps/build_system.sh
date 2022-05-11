@@ -1,14 +1,15 @@
 #!/bin/bash
 
-# when basic system is complete, chroot using this script
-# login without hashing
-
 GREEN='\033[0;32m'
 RED='\033[0;31m'
 NC='\033[0m'
 
 function msg(){ printf "${NC}$1 $2${NC}\n" ; }
 function msg_green(){ printf "\n${NC}$1 ${GREEN}$2${NC}\n\n" ; }
+function msg_green_sleep(){ 
+	printf "\n${NC}$1 ${GREEN}$2${NC}\n\n" ;
+	sleep 5 ;
+}
 function msg_red(){ printf "\n${NC}$1 ${RED}$2${NC}\n\n" ; }
 
 if [ ! -d "${V_BUILD_TREE_X86_64}" ]; then
@@ -23,15 +24,10 @@ if [ ! -d "$OSXDIR" ]; then
 	exit 1
 fi
 
-if [ -e "${V_BUILD_DIR}/.vkfs_mounted" ]; then
-	msg_red "chroot fail:" "something wrong, remove file \.vkfs_mounted and try again."
-	exit 0
-fi
-
 ${OSXDIR}/root_deps/mount_vkfs.sh
 
 msg_green "Re-extraction..."
-rm -rf ${V_BUILD_PKG_DIR} && mkdir ${V_BUILD_PKG_DIR}
+sudo rm -rf ${V_BUILD_PKG_DIR} && mkdir ${V_BUILD_PKG_DIR}
 ${V_BUILD_SYSTEM}/scripts/osx64/common/extract_archives.sh
 
 msg_green "Copy part scripts into:" "${V_BUILD_TREE_X86_64}"
@@ -46,6 +42,8 @@ if [ ! -d "${V_BUILD_TREE_X86_64}/packages" ]; then
 	mkdir ${V_BUILD_TREE_X86_64}/packages
 fi
 
+msg_green_sleep "Stage 2: " "build temp system"
+
 sudo chroot "${V_BUILD_TREE_X86_64}" /usr/bin/env -i   \
 							HOME=/root                  \
 							TERM="vt100"                \
@@ -53,6 +51,7 @@ sudo chroot "${V_BUILD_TREE_X86_64}" /usr/bin/env -i   \
 							PATH=/usr/bin:/usr/sbin     \
 							/parts/2-temp_system/run.sh
 
+msg_green_sleep "Stage 3: " "build main system"
 sudo chroot "${V_BUILD_TREE_X86_64}" /usr/bin/env -i   \
 							HOME=/root                  \
 							TERM="vt100"                \
@@ -60,6 +59,7 @@ sudo chroot "${V_BUILD_TREE_X86_64}" /usr/bin/env -i   \
 							PATH=/usr/bin:/usr/sbin     \
 							/parts/3-main_system/run.sh
 
+msg_green_sleep "Stage 4: " "configure system"
 sudo chroot "${V_BUILD_TREE_X86_64}" /usr/bin/env -i   \
 							HOME=/root                  \
 							TERM="vt100"                \

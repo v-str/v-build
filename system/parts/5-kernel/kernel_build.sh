@@ -22,7 +22,6 @@ else
 	fi
 
 	cd $linux && make -j`nproc`
-
 fi
 
 exit 0

@@ -1,10 +1,21 @@
 #!/bin/bash
 
-rm /etc/group
-rm /etc/passwd
+rm -v /etc/group*
+rm -v /etc/passwd*
 
-cp -r etc-copy/* /etc/
+sleep 3
 
+# etc
+cp -rv /parts/configure_system/etc-copy/* /etc/
+
+# fonts
+if [ ! -d "/usr/share/fonts" ]; then
+	mkdir /usr/share/fonts
+	cp -rv /parts/configure_system/fonts/* /usr/share/fonts/
+	ln -s /usr/share/fonts /usr/lib/fonts
+fi
+
+# other
 cat > /etc/shells << "EOF"
 # Begin /etc/shells
 

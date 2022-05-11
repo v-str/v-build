@@ -94,6 +94,22 @@ pushd /parts/3-main_system
 ./sysvinit_pkg.sh
 ./rsync_pkg.sh
 ./lfs_bootscripts.sh
+./libpng_pkg.sh
+./which_pkg.sh
+./freetype_pkg.sh
+./fontconfig_pkg.sh
+
+# COMMENT liburcu, multipath-tools before parted
+./liburcu_pkg.sh
+./libaio_pkg.sh
+./lvm2_pkg.sh
+./parted_pkg.sh
+
+./libusb_pkg.sh
+./talloc_pkg.sh
+./libuuid_pkg.sh
+./krb5_pkg.sh
+./pcsc-lite_pkg.sh
 
 
 # COMMENT strip system

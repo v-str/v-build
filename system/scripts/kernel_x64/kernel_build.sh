@@ -13,10 +13,14 @@ if [ ! -d "${V_BUILD_TREE_X86_64}" ]; then
 	exit 1
 fi
 
-if [ ! -e "${V_BUILD_DIR}/.vkfs_mounted" ]; then
-	msg_red "chroot fail:" "first, you need to prepare virtual kernel fs"
-	exit 0
+KDIR="${V_BUILD_SYSTEM}/scripts/kernel_x64"
+
+if [ ! -d "$KDIR" ]; then
+	msg_red "Failure to find directory: " "$KDIR"
+	exit 1
 fi
+
+${KDIR}/mount_vkfs.sh
 
 msg_green "Copy parts scripts into:" "${V_BUILD_TREE_X86_64}"
 
@@ -29,6 +33,8 @@ sudo chroot "${V_BUILD_TREE_X86_64}" /usr/bin/env -i   \
 							PS1='(v-build chroot) \u:\w\$ ' \
 							PATH=/usr/bin:/usr/sbin     \
 							/bin/bash /parts/5-kernel/kernel_build.sh
+
+${KDIR}/unmount_vkfs.sh
 
 exit 0
 

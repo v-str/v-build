@@ -34,9 +34,11 @@ pushd build
 echo "rootsbindir=/usr/sbin" > configparms
 
 ../configure --prefix=/usr                            \
+             --enable-shared                          \
              --disable-werror                         \
              --enable-kernel=3.2                      \
              --enable-stack-protector=strong          \
+             --disable-timezone-tools                 \
              --with-headers=/usr/include              \
              libc_cv_slibdir=/usr/lib
 
@@ -136,8 +138,8 @@ cp -v zone.tab zone1970.tab iso3166.tab $ZONEINFO
 zic -d $ZONEINFO -p America/New_York
 unset ZONEINFO
 
-tzselect
-ln -sfv /usr/share/zoneinfo/Europe/Moscow /etc/localtime
+//tzselect
+//ln -sfv /usr/share/zoneinfo/Europe/Moscow /etc/localtime
 
 # ld config
 cat > /etc/ld.so.conf << "EOF"
