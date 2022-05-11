@@ -8,6 +8,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
 #include <unistd.h>
 
 #include "bin_exec.h"
@@ -39,19 +40,27 @@ static void execute() {
   reset_user_args();
 }
 
-static void _parse_order_list() {
+static void just_show() {
+  printf("\t%s, < args: %s >\n", _element->descriptor.command,
+         _element->descriptor.args);
+}
+
+static void _parse_order_list(bool is_exec_mode) {
   FILE *pf = fopen(_order_list_path, "r");
   char *line = malloc(COMMON_TEXT_SIZE);
   size_t n = COMMON_TEXT_SIZE;
   ssize_t read = 0;
 
   if (pf == NULL) {
-    char err[COMMON_TEXT_SIZE] = " _parse_order_list, ";
-    strcat(err, strerror(errno));
-    printf("error: %s\n", err);
+    print_info_msg(
+        ERROR_MSG,
+        "function: _parse_order_list, order list path error, is it exist?",
+        YES);
     free(line);
     return;
   }
+
+  print_info_msg(COMPLETE, "order list found", YES);
 
   while ((read = getline(&line, &n, pf)) != -1) {
 
@@ -87,16 +96,19 @@ static void _parse_order_list() {
         print_info_msg(ERROR_MSG, temp, YES);
         break;
       } else {
-        execute();
+        if (is_exec_mode) {
+          execute();
+        } else {
+          just_show();
+        }
       }
     }
-    sleep(1);
   }
 
   free(line);
 }
 
-void exec_order_list() {
+void exec_order_list(bool is_exec_mode) {
   char file_path[COMMON_TEXT_SIZE] = {0};
 
   if (g_conf.is_line_args == false) {
@@ -110,8 +122,7 @@ void exec_order_list() {
     return;
   } else {
     strcat(file_path, ORDER_LIST);
-    print_info_msg(COMPLETE, "order list found, opening", YES);
     strcpy(_order_list_path, file_path);
-    _parse_order_list();
+    _parse_order_list(is_exec_mode);
   }
 }

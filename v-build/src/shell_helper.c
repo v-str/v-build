@@ -115,7 +115,12 @@ void exec_help_command(const char *cmd) {
   }
 
   if (strcmp(cmd, "run_order_list") == 0 || strcmp(cmd, "rol") == 0) {
-    exec_order_list();
+    exec_order_list(true);
+  }
+
+  if (strcmp(cmd, "show_order_list") == 0 || strcmp(cmd, "sol") == 0) {
+    bool is_exec_mode = false; // just show order list
+    exec_order_list(is_exec_mode);
   }
 
   if (strcmp(cmd, "set_column_args") == 0 || strcmp(cmd, "sca") == 0) {
