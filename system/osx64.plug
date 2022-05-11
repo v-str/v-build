@@ -11,6 +11,15 @@
 
 --begin
 type = bin
+command = osx64_export_all
+exec = system/libs/libosx64_lib.so.1.0.0
+ret_val = void
+args = no
+desc = export variables and linux kernel ( ! for CURRENT directory ! )
+--end
+
+--begin
+type = bin
 command = osx64_export_variables
 exec = system/libs/libosx64_lib.so.1.0.0
 ret_val = void

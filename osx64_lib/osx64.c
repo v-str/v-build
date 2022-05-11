@@ -2,6 +2,8 @@
 
 #include <dirent.h>
 #include <errno.h>
+#include <regex.h>
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -102,7 +104,7 @@ void osx64_export_variables() {
     exit(EXIT_FAILURE);
   }
 
-  printf("exported.\n");
+  printf("vars exported.\n");
 }
 
 void osx64_export_linux_kernel(const char *path) {
@@ -119,7 +121,55 @@ void osx64_export_linux_kernel(const char *path) {
       printf("setenv error: %s\n", strerror(errno));
       exit(EXIT_FAILURE);
     } else {
-      printf("exported.\n");
+      printf("kernel exported.\n");
     }
   }
+}
+
+#define KERNEL_SEARCH "^linux-"
+
+void osx64_export_all() {
+  char curdir[COMMON_TEXT_SIZE] = {0};
+  char kernel_path[COMMON_TEXT_SIZE] = {0};
+  DIR *d = NULL;
+  struct dirent *dir = NULL;
+  regex_t regex;
+  int reg_ret = 0;
+  bool is_ok = false;
+
+  if (getcwd(curdir, COMMON_TEXT_SIZE) == NULL) {
+    printf("getcwd error");
+    exit(EXIT_FAILURE);
+  }
+
+  d = opendir(curdir);
+
+  // init regex
+  reg_ret = regcomp(&regex, KERNEL_SEARCH, 0);
+  if (reg_ret) {
+    printf("regex compilation error");
+    exit(EXIT_FAILURE);
+  }
+
+  while ((dir = readdir(d)) != NULL) {
+    char *dirname = dir->d_name;
+
+    reg_ret = regexec(&regex, dirname, 0, NULL, 0);
+
+    if (reg_ret == 0) {
+      strcpy(kernel_path, curdir);
+      strcat(kernel_path, "/");
+      strcat(kernel_path, dirname);
+      is_ok = true;
+      break;
+    }
+  }
+
+  if (!is_ok) {
+    printf("cannot find linux directory, is it named as \"linux-*\"?\n");
+    return;
+  }
+
+  osx64_export_variables();
+  osx64_export_linux_kernel(kernel_path);
 }
