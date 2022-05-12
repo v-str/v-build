@@ -63,8 +63,8 @@ export MAKE=/usr/bin/make
     -no-libjpeg \
     -no-mtdev \
     -no-xcb \
-    -freetype \
-    -libpng \
+    -qt-freetype \
+    -qt-libpng \
     -no-xcb-xlib \
     -no-pulseaudio \
     -no-opengl \
@@ -81,6 +81,9 @@ fi
 pushd /opt/qt5
 cmake --install /packages/qt5/qt5
 popd
+
+# qt no longer support fonts, so, create simlink here
+ln -sf /usr/share/fonts/dejavu /opt/qt5/lib/fonts
 
 exit 0
 

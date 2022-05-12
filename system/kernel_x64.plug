@@ -24,7 +24,7 @@ command = remove_kernel
 exec = system/scripts/kernel_x64/remove_kernel.sh
 ret_val = void
 args = no
-desc = place kernel inside tree
+desc = remove kernel from tree
 --end
 
 --begin

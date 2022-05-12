@@ -87,7 +87,15 @@ rm -rfv ./usr/share/cmake*
 rm -rfv ./usr/share/git-core
 rm -rfv ./usr/share/gitk
 
-echo "Before:"
+rm -rfv ./usr/share/man
+
+# enable extglob option for partial removing
+shopt -s extglob
+pushd /usr/share/locale
+rm -rfv !("ru_RU.utf8"|"ru_RU.UTF-8"|"en_US.utf8"|"en_US")
+popd
+
+echo "Purified:"
 du -sch *
 
 popd
