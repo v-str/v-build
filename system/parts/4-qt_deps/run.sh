@@ -1,6 +1,6 @@
 #!/bin/bash
 
-pushd /parts/4-misc
+pushd /parts/4-qt_deps
 
 ./libarchive_pkg.sh
 ./libuv_pkg.sh
