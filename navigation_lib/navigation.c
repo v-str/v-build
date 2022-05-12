@@ -38,7 +38,7 @@ void createdir(const char *path) {
 
 void removenode(const char *path) {
   char dir[1024] = {0};
-  strcpy(dir, "rm -rf ");
+  strcpy(dir, "sudo rm -rf ");
   strcat(dir, path);
 
   system(dir);
