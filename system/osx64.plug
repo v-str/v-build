@@ -96,7 +96,7 @@ command = osx64_build_system
 exec = system/scripts/osx64/root_deps/build_system.sh
 ret_val = void
 args = no
-desc = build binutils, gcc, libstd, etc.
+desc = build main system via bunch of scripts
 --end
 
 --begin
