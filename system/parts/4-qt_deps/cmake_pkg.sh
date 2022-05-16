@@ -8,7 +8,7 @@ function msg(){ printf "${NC}$1 $2${NC}\n" ; }
 function msg_green(){ printf "\n${NC}$1 ${GREEN}$2${NC}\n\n" ; }
 function msg_red(){ printf "\n${NC}$1 ${RED}$2${NC}\n\n" ; }
 
-search_pkg=`sh /parts/4-misc/find_package.sh "cmake"`
+search_pkg=`sh /parts/4-qt_deps/find_package.sh "cmake"`
 
 if [ ! -z "${search_pkg}" ]; then
 	msg_green "package found:" "$search_pkg"
